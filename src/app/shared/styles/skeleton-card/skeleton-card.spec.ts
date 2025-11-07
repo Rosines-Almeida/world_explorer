@@ -7,11 +7,9 @@ describe('SkeletonCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SkeletonCardComponent], // ✅ Standalone Import
-    }).compileComponents(); // ✅ Compila templateUrl
-  });
+      imports: [SkeletonCardComponent],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(SkeletonCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

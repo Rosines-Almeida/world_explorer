@@ -1,18 +1,19 @@
-export default {
+/** @type {import('jest').Config} */
+module.exports = {
   preset: 'jest-preset-angular',
   testEnvironment: 'jsdom',
 
-  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  setupFilesAfterEnv: ['<rootDir>/test-setup.ts'],
 
   transform: {
-    '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
+    '^.+\\.(ts|js|mjs|html)$': 'jest-preset-angular',
   },
 
-  // ✅ Isso impede que o Jest tente "ler" SCSS/arquivos de estilo
+  transformIgnorePatterns: [
+    'node_modules/(?!.*\\.mjs$)',
+  ],
+
   moduleNameMapper: {
-    '\\.(css|scss|sass|less)$': 'identity-obj-proxy',
+    '\\.(scss|sass|css)$': 'identity-obj-proxy', 
   },
-
-  // ✅ Garante que templates externos sejam carregados corretamente
-  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
 };
