@@ -1,0 +1,95 @@
+<main *ngIf="country$ | async as country" class="country-details">
+  
+   <div class="back-button">
+    <app-button variant="primary" size="sm" (onClick)="back()">
+      Voltar para Lista
+    </app-button>
+  </div>
+
+   <header class="country-header">
+    <div class="flag-container">
+      <img
+        *ngIf="country?.flags?.svg; else noFlag"
+        [src]="country.flags.svg"
+        [alt]="'Bandeira do ' + country.name?.common"
+        class="country-flag"
+      />
+      <ng-template #noFlag>
+        <div class="no-flag">
+          <p><em>Bandeira não disponível</em></p>
+        </div>
+      </ng-template>
+    </div>
+    
+    <div class="country-title">
+      <h1>{{ country?.name?.common }}</h1>
+       <p class="country-region">
+        <span class="region">{{ country?.region }}</span>
+        <span *ngIf="country?.subregion" class="separator">•</span>
+        <span *ngIf="country?.subregion" class="subregion">{{ country?.subregion }}</span>
+      </p>
+    </div>
+  </header>
+
+   <section class="info-grid">
+    <app-info-card
+      icon="home"
+      title="Capital"
+      [value]="country?.capital?.[0]"
+      theme="primary">
+    </app-info-card>
+
+    <app-info-card
+      icon="groups"
+      title="População"
+      [value]="country?.population ? ((country.population | number:'1.0-0') || '0') : 'N/A'"
+      theme="secondary">
+    </app-info-card>
+
+    <app-info-card
+      icon="map"
+      title="Área"
+      [value]="country?.area ? ((country.area | number:'1.0-0') || '0') + ' km²' : 'N/A'">
+    </app-info-card>
+
+    <app-info-card
+      icon="public"
+      title="Continente"
+      [value]="country?.continents?.length ? country.continents?.join(', ') : ''">
+    </app-info-card>
+
+    <app-info-card
+      icon="chat"
+      title="Idiomas"
+      [value]="country?.languages ? (country.languages | languagesPipe) : ''">
+    </app-info-card>
+
+    <app-info-card
+      icon="paid"
+      title="Moeda"
+      [value]="country?.currencies ? (country.currencies | currenciesPipe) : ''">
+    </app-info-card>
+
+    <app-info-card
+      icon="schedule"
+      title="Fuso Horário"
+      [value]="country?.timezones?.length ? country.timezones?.join(', ') : ''">
+    </app-info-card>
+
+    <app-info-card
+      icon="location_on"
+      title="Código"
+      [value]="country?.cca3"
+      theme="primary">
+    </app-info-card>
+
+
+  </section>
+   <app-location 
+   *ngIf="country?.maps" 
+   [maps]="country.maps">
+  </app-location>
+  
+</main>
+ 
+ 

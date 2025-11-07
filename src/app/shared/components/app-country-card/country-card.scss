@@ -1,0 +1,171 @@
+@import '../../styles/shared.scss';
+
+.country-card {
+  background-color: $card-bg;
+  border-radius: $border-radius;
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid $secondary-color;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+  }
+
+  .flag {
+    width: 100%;
+    max-width: 200px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: $border-radius;
+    margin-bottom: 1rem;
+    background-color: #f0f0f0;
+  }
+
+  h2 {
+    font-size: $subheading-font-size;
+    margin-bottom: 1rem;
+    color: $primary-color;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .details {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    width: 100%;
+    text-align: left;
+    
+    li {
+      margin-bottom: 0.5rem;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid #eee;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      strong {
+        color: $primary-color;
+        display: inline-block;
+        min-width: 100px;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+
+    app-button {
+      flex: 1 1 45%;
+      min-width: 120px;
+    }
+  }
+}
+
+// Responsividade
+@include responsive('sm') {
+  .country-card {
+    padding: 1rem;
+    
+    .details {
+      li {
+        strong {
+          min-width: 80px;
+          display: block;
+          margin-bottom: 0.25rem;
+        }
+      }
+    }
+    
+    .actions {
+      app-button {
+        flex: 1 1 100%;
+        min-width: auto;
+      }
+    }
+  }
+}
+
+.country-card { 
+  &.card-exiting {
+    animation: slideOutFade 0.3s ease forwards;
+    pointer-events: none;
+  }
+}
+
+@keyframes slideOutFade {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    max-height: 500px;
+    margin-bottom: 1.5rem;
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(-20px) scale(0.95);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%) scale(0.9);
+    max-height: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.country-card.card-exiting {
+  animation: slideOutFade 0.3s ease forwards;
+  pointer-events: none; // Impede interação durante animação
+  
+  // Garante que o card mantenha sua posição durante a animação
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes slideOutFade {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    max-height: 500px;
+    margin-bottom: 1.5rem;
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(-20px) scale(0.95);
+  }
+  100% {
+    opacity: 0;
+     transform: translateX(100%) scale(0.9);
+    max-height: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+}
+
+// Para garantir transição suave no grid
+:host {
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.country-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}

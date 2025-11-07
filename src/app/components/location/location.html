@@ -1,0 +1,15 @@
+<section class="map-section" *ngIf="maps?.googleMaps">
+    <div class="map-content">
+        <mat-icon class="map-icon">location_on</mat-icon>
+        <app-button variant="primary" size="md" (onClick)="openGoogleMaps(maps?.googleMaps)">
+            Ver no Google Maps
+        </app-button>
+    </div>
+</section>
+<section class="map-section" *ngIf="!maps?.googleMaps">
+    <div class="map-content">
+        <mat-icon class="map-icon">location_on</mat-icon>
+
+        <p class="no-map">Mapa não disponível</p>
+    </div>
+</section>

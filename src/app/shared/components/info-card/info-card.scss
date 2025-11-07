@@ -1,0 +1,56 @@
+@import '../../styles/shared.scss';
+
+.info-card {
+  background: $card-bg;
+  padding: 1.5rem;
+  border-radius: $border-radius;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid $secondary-color;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+
+  .info-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+    color: $primary-color;
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin: 0;
+    color: $text-color;
+    font-weight: 500;
+    word-break: break-word;
+  }
+
+  // Temas opcionais
+  &.theme-primary {
+    border-left-color: $primary-color;
+    
+    .info-icon {
+      color: $primary-color;
+    }
+  }
+
+  &.theme-secondary {
+    border-left-color: $secondary-color;
+    
+    .info-icon {
+      color: $secondary-color;
+    }
+  }
+}

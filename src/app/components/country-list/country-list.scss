@@ -1,0 +1,72 @@
+@import '../../shared/styles/shared.scss';  
+
+.country-list {
+  padding: 1rem;
+  font-size: $base-font-size;
+  color: $text-color;
+
+  h1 {
+    font-size: $heading-font-size;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+  }
+
+  .countries-content {
+    h2 {
+      font-size: $subheading-font-size;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: $primary-color;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #666;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+
+    @include responsive('sm') {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  .loading-section {
+    h2, p {
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem;
+    background-color: $card-bg;
+    border-radius: $border-radius;
+
+    p {
+      font-size: 1.1rem;
+      color: #666;
+      margin: 0;
+    }
+  }
+}
+
+@include responsive('sm') {
+  .country-list {
+    padding: 0.5rem;
+  }
+}

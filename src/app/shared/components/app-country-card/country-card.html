@@ -1,0 +1,37 @@
+<article 
+  class="country-card"
+  [class.card-exiting]="isExiting" 
+  (click)="onCardClick()">
+  
+  <img
+    [src]="country.flags.png"
+    [alt]="country?.name?.common || 'Bandeira não disponível'"
+    class="flag"
+  />
+
+  <h2>{{ country.name.common }}</h2>
+
+  <ul class="details">
+    <li><strong>Capital:</strong> {{ country.capital?.[0] || 'N/A' }}</li>
+    <li><strong>Região:</strong> {{ country.region || 'N/A' }}</li>
+    <li><strong>Fuso horário:</strong> {{ country.timezones?.[0] || 'N/A' }}</li>
+  </ul>
+
+  <div class="actions">
+    <app-button
+      variant="primary"
+      size="sm"
+      [disabled]="isExiting" 
+      (onClick)="onViewDetails($event, country.cca3)">
+      Ver detalhes
+    </app-button>
+    
+    <app-button
+      variant="danger"
+      size="sm"
+      [disabled]="isExiting" 
+      (onClick)="onDelete($event, country.cca3)">
+      {{ isExiting ? 'Excluindo...' : 'Excluir' }} 
+    </app-button>
+  </div>
+</article>

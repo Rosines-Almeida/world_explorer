@@ -1,0 +1,33 @@
+<main class="country-list">
+  
+  <div *ngIf="loading$ | async; else contentTemplate" class="loading-section">
+    <h2>Lista de Países</h2>
+    <p>Carregando países...</p>
+    
+    <div class="grid">
+      <app-skeleton-card *ngFor="let item of skeletonItems"></app-skeleton-card>
+    </div>
+  </div>
+ 
+  <ng-template #contentTemplate>
+    <section *ngIf="countries$ | async as countries" class="countries-content">
+      <h2>Lista de Países</h2>
+      <p>{{ countries.length }} países encontrados.</p>
+      
+      <div *ngIf="countries.length > 0; else emptyTemplate" class="grid">
+        <app-country-card
+          *ngFor="let country of countries"
+          [country]="country"
+          (viewDetails)="viewDetails($event)"
+          (delete)="deleteCountry($event)">
+        </app-country-card>
+      </div>
+      
+      <ng-template #emptyTemplate>
+        <div class="empty-state">
+          <p>Nenhum país encontrado.</p>
+        </div>
+      </ng-template>
+    </section>
+  </ng-template>
+</main>

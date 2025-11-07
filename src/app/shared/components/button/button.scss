@@ -1,0 +1,61 @@
+@import '../../styles/shared.scss';
+
+.app-button {
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-family: $font-family;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-align: center;
+  line-height: 1;
+
+  // Tamanhos
+  &.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  &.btn-md {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  // Variantes
+  &.btn-primary {
+    background-color: $secondary-color;
+    color: white;
+
+    &:hover:not(.btn-disabled) {
+      background-color: darken($secondary-color, 10%);
+    }
+
+    &:active:not(.btn-disabled) {
+      transform: translateY(1px);
+    }
+  }
+
+  &.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+
+    &:hover:not(.btn-disabled) {
+      background-color: darken(#e74c3c, 10%);
+    }
+
+    &:active:not(.btn-disabled) {
+      transform: translateY(1px);
+    }
+  }
+
+  // Estados
+  &.btn-full-width {
+    width: 100%;
+  }
+
+  &.btn-disabled {
+    background-color: #bdc3c7;
+    color: #7f8c8d;
+    cursor: not-allowed;
+  }
+}
