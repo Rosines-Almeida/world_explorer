@@ -9,7 +9,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "serve:ssr:world": "node dist/world/server/server.mjs"
+    "serve:ssr:world": "node dist/world/server/server.mjs",
+    "storybook": "ng run world:storybook",
+    "build-storybook": "ng run world:build-storybook",
+    "storybook-dev": "storybook dev -p 6006"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +37,7 @@
     "@angular-devkit/build-angular": "^19.2.19",
     "@angular/cli": "^19.2.19",
     "@angular/compiler-cli": "^19.2.0",
+    "@storybook/angular": "^7.6.17",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^29.5.14",
@@ -48,6 +52,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "storybook": "^7.6.17",
     "typescript": "~5.7.2"
   }
 }

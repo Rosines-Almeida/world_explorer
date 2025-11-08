@@ -10,6 +10,7 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
@@ -93,6 +94,13 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+          "storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "world:build"
           }
         }
       }
