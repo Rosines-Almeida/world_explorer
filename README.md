@@ -153,16 +153,7 @@ npm run build
 
 # Os arquivos estarão em dist/world
 ```
-
-### Build com SSR
-```bash
-# Build com Server-Side Rendering
-npm run build
-
-# Servir aplicação com SSR
-npm run serve:ssr:world
-```
-
+ 
 ## Como Contribuir
 
 1. Fork o projeto
