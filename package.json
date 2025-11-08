@@ -12,7 +12,8 @@
     "serve:ssr:world": "node dist/world/server/server.mjs",
     "storybook": "ng run world:storybook",
     "build-storybook": "ng run world:build-storybook",
-    "storybook-dev": "storybook dev -p 6006"
+    "storybook-dev": "storybook dev -p 6006",
+     "vercel-build": "npm ci && npm run build -- --configuration production"
   },
   "private": true,
   "dependencies": {
