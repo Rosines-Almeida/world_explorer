@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { CountryModel } from '../../core/models/country.model';
- import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CountryCardComponent } from "../../shared/components/app-country-card/country-card";
 import { SkeletonCardComponent } from '../../shared/styles/skeleton-card/skeleton-card';
 import { Button } from "../../shared/components/button/button";
@@ -29,8 +29,7 @@ export class CountryListComponent {
   }
 
   ngOnInit() {
-    console.log('CountryListComponent initialized');
-    this.countriesService.loadCountries();
+     this.countriesService.loadCountries();
   }
 
   public viewDetails(code: string) {

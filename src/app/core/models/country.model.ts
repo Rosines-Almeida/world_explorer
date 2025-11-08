@@ -1,7 +1,7 @@
 import { map } from 'rxjs';
 export interface CountryModel {
   name: { common: string };
-  flags: { png: string; svg: string };
+  flags: FlagsModel;
   cca3: string;
   region?: string;
   capital?: string[];

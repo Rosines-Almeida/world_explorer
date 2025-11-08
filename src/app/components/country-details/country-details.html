@@ -9,7 +9,7 @@
    <header class="country-header">
     <div class="flag-container">
       <img
-        *ngIf="country?.flags?.svg; else noFlag"
+        *ngIf="country.flags.svg; else noFlag"
         [src]="country.flags.svg"
         [alt]="'Bandeira do ' + country.name?.common"
         class="country-flag"

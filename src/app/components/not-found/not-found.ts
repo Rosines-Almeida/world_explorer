@@ -10,9 +10,7 @@ import { Button } from "../../shared/components/button/button";
 })
 export class NotFoundComponent {
 
-  constructor( private router: Router) {}
-
-  
+  constructor(private router: Router) { }
 
   public goBack(): void {
     this.router.navigate(['/']);

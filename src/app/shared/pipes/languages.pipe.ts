@@ -6,6 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class LanguagesPipe implements PipeTransform {
   transform(languages?: { [key: string]: string }): string {
-    return languages ? Object.values(languages).join(', ') : 'N/A';
+    if (!languages || Object.keys(languages).length === 0) {
+      return 'N/A';
+    }
+    
+    return Object.values(languages).join(', ');
   }
 }

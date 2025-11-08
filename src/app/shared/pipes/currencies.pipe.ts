@@ -6,10 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CurrenciesPipe implements PipeTransform {
   transform(currencies?: { [key: string]: { name: string; symbol: string } }): string {
-    return currencies
-      ? Object.values(currencies)
-          .map(c => `${c.name} (${c.symbol})`)
-          .join(', ')
-      : 'N/A';
+    if (!currencies || Object.keys(currencies).length === 0) {
+      return 'N/A';
+    }
+    
+    return Object.values(currencies)
+      .map(c => `${c.name} (${c.symbol})`)
+      .join(', ');
   }
 }

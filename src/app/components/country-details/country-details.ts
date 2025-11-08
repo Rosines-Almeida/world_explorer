@@ -4,8 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs/operators';
 import { CountryDetailModel } from '../../core/models/country.model';
- import { InfoCardComponent } from "../../shared/components/info-card/info-card"; 
- 
+import { InfoCardComponent } from "../../shared/components/info-card/info-card"; 
 import { Location } from "../location/location";
 import { CurrenciesPipe } from '../../shared/pipes/currencies.pipe';
 import { LanguagesPipe } from '../../shared/pipes/languages.pipe';
