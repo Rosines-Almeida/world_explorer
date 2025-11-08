@@ -14,7 +14,6 @@ describe('InfoCardComponent', () => {
     fixture = TestBed.createComponent(InfoCardComponent);
     component = fixture.componentInstance;
     
-    // Configurar inputs obrigatórios
     component.icon = 'test-icon';
     component.title = 'Test Title';
     component.value = 'Test Value';

@@ -6,15 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-info-card',
   standalone: true,
   imports: [CommonModule, MatIconModule],  
-  template: `
-    <div class="info-card" [class]="'theme-' + theme">
-      <div class="info-icon">
-        <mat-icon>{{ icon }}</mat-icon>
-      </div>
-      <h3>{{ title }}</h3>
-      <p>{{ value || 'N/A' }}</p>
-    </div>
-  `,
+  templateUrl: './info-card.html',
   styleUrls: ['./info-card.scss']
 })
 export class InfoCardComponent {

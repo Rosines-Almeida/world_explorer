@@ -41,11 +41,10 @@ export class CountriesService {
         ),
         tap(() => {
           this.dataLoaded = true;
-          this.loadingSubject.next(false); // Para o loading ao sucesso
+          this.loadingSubject.next(false);
         }),
         catchError((error) => {
-
-          this.loadingSubject.next(false);
+           this.loadingSubject.next(false);
           this.errorSubject.next('Erro ao carregar países. Tente novamente.');
           return of([]);
         })

@@ -77,7 +77,6 @@
   }
 }
 
-// Responsividade
 @include responsive('sm') {
   .country-card {
     padding: 1rem;
@@ -131,9 +130,8 @@
 
 .country-card.card-exiting {
   animation: slideOutFade 0.3s ease forwards;
-  pointer-events: none; // Impede interação durante animação
+  pointer-events: none; 
   
-  // Garante que o card mantenha sua posição durante a animação
   position: relative;
   z-index: 1;
 }
@@ -160,7 +158,6 @@
   }
 }
 
-// Para garantir transição suave no grid
 :host {
   display: block;
   transition: all 0.3s ease;

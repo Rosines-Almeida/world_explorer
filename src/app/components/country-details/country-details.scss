@@ -7,7 +7,6 @@
   padding: 2rem 1rem;
   font-family: $font-family;
 
-  // Header Section
   .country-header {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -141,7 +140,6 @@
     }
   }
 
-  // Map Section
   .map-section {
     background: $card-bg;
     padding: 2rem;
@@ -218,7 +216,6 @@
   }
 }
 
-// Loading Skeleton Styles
 .loading-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -324,6 +321,6 @@
   }
 }
 
-back-button {
+.back-button {
     margin-bottom: 15px;
 }

@@ -51,7 +51,6 @@ describe('Button', () => {
     });
    
       it('deve ter valores padrão corretos', () => {
-      // Assert
       expect(component.variant).toBe('primary');
       expect(component.size).toBe('md');
       expect(component.disabled).toBe(false);
@@ -101,34 +100,26 @@ describe('Button', () => {
        component.variant = 'danger';
       fixture.detectChanges();
 
-      // Act
       const buttonElement: HTMLButtonElement = fixture.nativeElement.querySelector('button');
 
-      // Assert
       expect(buttonElement.classList.contains('btn-danger')).toBe(true);
     });
 
     it('deve ter atributo disabled quando desabilitado', () => {
-      // Arrange
       component.disabled = true;
       fixture.detectChanges();
 
-      // Act
       const buttonElement: HTMLButtonElement = fixture.nativeElement.querySelector('button');
 
-      // Assert
       expect(buttonElement.disabled).toBe(true);
     });
 
      it('deve ter type submit quando configurado', () => {
-      // Arrange
       component.type = 'submit';
       fixture.detectChanges();
 
-      // Act
       const buttonElement: HTMLButtonElement = fixture.nativeElement.querySelector('button');
 
-      // Assert
       expect(buttonElement.type).toBe('submit');
     });
 });

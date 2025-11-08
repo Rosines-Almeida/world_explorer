@@ -27,7 +27,6 @@ describe('CountryDetailsComponent', () => {
   };
 
   beforeEach(async () => {
-    // Mock dos serviços
     mockActivatedRoute = {
       paramMap: of({
         get: jest.fn().mockReturnValue('BRA'),
@@ -65,10 +64,8 @@ describe('CountryDetailsComponent', () => {
   });
 
     it('deve carregar país baseado no parâmetro da rota', (done) => {
-      // Act
       component.ngOnInit();
 
-      // Assert
       component.country$.subscribe(country => {
         expect(country).toEqual(mockCountry);
         expect(mockCountriesService.getCountryByCode).toHaveBeenCalledWith('BRA');
@@ -77,13 +74,10 @@ describe('CountryDetailsComponent', () => {
     });
 
     it('deve usar distinctUntilChanged para evitar chamadas desnecessárias', (done) => {
-      // Arrange
       const getCountrySpy = mockCountriesService.getCountryByCode;
       
-      // Act
       component.ngOnInit();
 
-      // Assert
       component.country$.subscribe(() => {
         expect(getCountrySpy).toHaveBeenCalledTimes(1);
         done();
@@ -94,13 +88,10 @@ describe('CountryDetailsComponent', () => {
   describe('Tratamento de Erros', () => {
     
     it('deve navegar para not-found quando país não existe', (done) => {
-      // Arrange
       mockCountriesService.getCountryByCode.mockReturnValue(of(undefined));
 
-      // Act
       component.ngOnInit();
 
-      // Assert
       component.country$.subscribe(() => {
         expect(mockRouter.navigate).toHaveBeenCalledWith(['/not-found']);
         expect(component.isLoading).toBe(false);
@@ -109,13 +100,10 @@ describe('CountryDetailsComponent', () => {
     });
 
     it('deve navegar para not-found em caso de erro na API', (done) => {
-      // Arrange
       mockCountriesService.getCountryByCode.mockReturnValue(throwError(() => new Error('API Error')));
 
-      // Act
       component.ngOnInit();
 
-      // Assert
       component.country$.subscribe(() => {
         expect(mockRouter.navigate).toHaveBeenCalledWith(['/not-found']);
         expect(component.isLoading).toBe(false);
@@ -127,35 +115,28 @@ describe('CountryDetailsComponent', () => {
   describe('Navegação', () => {
     
     it('deve navegar para home ao voltar', () => {
-      // Act
       component.back();
 
-      // Assert
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/']);
     });
 
     it('deve navegar para not-found quando país não encontrado', () => {
-      // Act
-      component['goToNotFound'](); // Método privado
+      component['goToNotFound'](); 
 
-      // Assert
       expect(mockRouter.navigate).toHaveBeenCalledWith(['/not-found']);
     });
   });
 
   describe('Comportamento do Template', () => { 
     it('deve mostrar conteúdo após carregamento', async () => {
-      // Arrange & Act
       component.ngOnInit();
       
-      // Aguarda o observable emitir
       await new Promise(resolve => {
         component.country$.subscribe(() => resolve(true));
       });
       
       fixture.detectChanges();
       
-      // Assert
       const mainElement = fixture.nativeElement.querySelector('main.country-details');
       const headerElement = fixture.nativeElement.querySelector('.country-header');
       const infoGridElement = fixture.nativeElement.querySelector('.info-grid');
@@ -169,7 +150,6 @@ describe('CountryDetailsComponent', () => {
   describe('Validação de Parâmetros', () => {
     
     it('não deve carregar país quando parâmetro cca3 é nulo', () => {
-      // Arrange
       (mockActivatedRoute as any).paramMap = of({
         get: jest.fn().mockReturnValue(null),
         has: jest.fn(),
@@ -177,7 +157,6 @@ describe('CountryDetailsComponent', () => {
         keys: jest.fn()
       });
 
-      // Act
       component.ngOnInit();
  
       expect(mockCountriesService.getCountryByCode).not.toHaveBeenCalled();
