@@ -2,7 +2,15 @@ import { RenderMode, ServerRoute } from '@angular/ssr';
 
 export const serverRoutes: ServerRoute[] = [
   {
-    path: '**',
+    path: '',
     renderMode: RenderMode.Prerender
+  },
+  {
+    path: 'not-found',
+    renderMode: RenderMode.Prerender
+  },
+  {
+    path: ':cca3',
+    renderMode: RenderMode.Server
   }
 ];
